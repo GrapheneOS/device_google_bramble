@@ -406,7 +406,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.media.c2@1.0-service \
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-google \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     camera.lito \
