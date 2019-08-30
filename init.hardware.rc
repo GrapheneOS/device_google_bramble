@@ -463,6 +463,10 @@ on property:sys.boot_completed=1
     chown system system /dev/iaxxx-module-celldrv
     chmod 0660 /dev/iaxxx-module-celldrv
 
+    # Permission for bootloader logs
+    chown root log /proc/bldrlog
+    chmod 0444 /proc/bldrlog
+
 service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
