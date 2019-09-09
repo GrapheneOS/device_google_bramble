@@ -17,6 +17,7 @@
 LOCAL_PATH := device/google/bramble
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
+TARGET_BOARD_PLATFORM := lito
 
 # Enable keymaster 4.0
 KMGK_USE_QTI_SERVICE := true
@@ -311,17 +312,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable USB debugging by default for bringup
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=adb
-
-PRODUCT_PACKAGES += \
-    hwcomposer.lito \
-    android.hardware.graphics.composer@2.3-service \
-    gralloc.lito \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    vendor.qti.hardware.display.allocator@1.0-service \
-    android.hardware.graphics.composer@2.3-impl \
-    android.hardware.graphics.mapper@2.0-impl-qti-display \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -823,3 +813,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+-include hardware/qcom/sm7250/display/config/display-product.mk
