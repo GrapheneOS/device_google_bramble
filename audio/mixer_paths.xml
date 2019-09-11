@@ -459,6 +459,28 @@
     <ctl name="PRI TDM TX Channel Offset" id="2" value="12" />
     <!-- ALC5513 config end-->
 
+    <!-- CS35L41 config -->
+    <ctl name="QUIN_TDM_RX_0 Channels" value="Four" />
+    <ctl name="QUIN_TDM_TX_0 Channels" value="Four" />
+    <ctl name="QUIN_TDM_RX_0 Format" value="S32_LE" />
+    <ctl name="AMP PCM Gain" value="17" />
+    <ctl name="R AMP PCM Gain" value="17" />
+    <ctl name="DRE DRE Switch" value="1" />
+    <ctl name="R DRE DRE Switch" value="1" />
+    <ctl name="VBSTMON Output Switch" value="1" />
+    <ctl name="R VBSTMON Output Switch" value="1" />
+    <ctl name="PCM Source" value="DSP" />
+    <ctl name="R PCM Source" value="DSP" />
+    <ctl name="DSP Booted" value="0" />
+    <ctl name="R DSP Booted" value="0" />
+    <ctl name="DSP1 Firmware" value="Protection" />
+    <ctl name="R DSP1 Firmware" value="Protection" />
+    <ctl name="DSP1 Preload Switch" value="1" />
+    <ctl name="R DSP1 Preload Switch" value="1" />
+    <ctl name="Main AMP Enable Switch" value="1" />
+    <ctl name="R Main AMP Enable Switch" value="1" />
+    <!-- CS35L41 config end-->
+
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="gsm-mode">
         <ctl name="GSM mode Enable" value="ON" />
@@ -489,7 +511,19 @@
     </path>
 
     <path name="deep-buffer-playback">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="deep-buffer-playback handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="deep-buffer-playback speaker">
+        <path name="deep-buffer-playback" />
+    </path>
+
+    <path name="deep-buffer-playback speaker-safe">
+        <path name="deep-buffer-playback "/>
     </path>
 
     <path name="deep-buffer-playback speaker-protected">
@@ -560,7 +594,19 @@
     </path>
 
     <path name="low-latency-playback">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia5" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback speaker">
+        <path name="low-latency-playback" />
+    </path>
+
+    <path name="low-latency-playback speaker-safe">
+        <path name="low-latency-playback" />
     </path>
 
     <path name="low-latency-playback speaker-protected">
@@ -634,7 +680,19 @@
     </path>
 
     <path name="audio-ull-playback">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia8" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia8" value="1" />
+    </path>
+
+    <path name="audio-ull-playback handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia8" value="1" />
+    </path>
+
+    <path name="audio-ull-playback speaker">
+        <path name="audio-ull-playback" />
+    </path>
+
+    <path name="audio-ull-playback speaker-safe">
+        <path name="audio-ull-playback" />
     </path>
 
     <path name="audio-ull-playback speaker-protected">
@@ -708,7 +766,19 @@
     </path>
 
     <path name="compress-offload-playback">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia4" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback speaker">
+        <path name="compress-offload-playback" />
+    </path>
+
+    <path name="compress-offload-playback speaker-safe">
+        <path name="compress-offload-playback" />
     </path>
 
     <path name="compress-offload-playback speaker-protected">
@@ -1685,8 +1755,18 @@
     </path>
 
     <path name="voicemmode1-call">
-        <ctl name="WSA_CDC_DMA_RX_0_Voice Mixer VoiceMMode1" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1" />
         <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1" />
+    </path>
+
+    <path name="voicemmode1-call handset">
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1"/>
+        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1"/>
+    </path>
+
+    <path name="voicemmode1-call speaker">
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1"/>
+        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1"/>
     </path>
 
     <path name="voicemmode1-call headphones">
@@ -1734,7 +1814,17 @@
     </path>
 
     <path name="voicemmode2-call">
-        <ctl name="WSA_CDC_DMA_RX_0_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+    </path>
+
+    <path name="voicemmode2-call handset">
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+    </path>
+
+    <path name="voicemmode2-call speaker">
+        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
         <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
     </path>
 
@@ -1784,7 +1874,19 @@
 
     <!-- VoIP Rx settings -->
     <path name="audio-playback-voip">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia10" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia10" value="1" />
+    </path>
+
+    <path name="audio-playback-voip handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia10" value="1" />
+    </path>
+
+    <path name="audio-playback-voip speaker">
+        <path name="audio-playback-voip" />
+    </path>
+
+    <path name="audio-playback-voip speaker-safe">
+        <path name="audio-playback-voip" />
     </path>
 
     <path name="audio-playback-voip headphones">
@@ -1904,33 +2006,19 @@
         <ctl name="TX DMIC MUX0" value="DMIC5" />
     </path>
 
+    <path name="handset">
+        <ctl name="Main AMP Enable Switch" value="1"/>
+        <ctl name="R Main AMP Enable Switch" value="0"/>
+    </path>
+
     <path name="speaker">
-        <ctl name="WSA_CDC_DMA_RX_0 Channels" value="Two" />
-        <ctl name="WSA RX0 MUX" value="AIF1_PB" />
-        <ctl name="WSA RX1 MUX" value="AIF1_PB" />
-        <ctl name="WSA_RX0 INP0" value="RX0" />
-        <ctl name="WSA_RX1 INP0" value="RX1" />
-        <ctl name="WSA_COMP1 Switch" value="1" />
-        <ctl name="WSA_COMP2 Switch" value="1" />
-        <ctl name="SpkrLeft COMP Switch" value="1" />
-        <ctl name="SpkrLeft BOOST Switch" value="1" />
-        <ctl name="SpkrLeft VISENSE Switch" value="1" />
-        <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
-        <ctl name="SpkrRight COMP Switch" value="1" />
-        <ctl name="SpkrRight BOOST Switch" value="1" />
-        <ctl name="SpkrRight VISENSE Switch" value="1" />
-        <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
+        <ctl name="Main AMP Enable Switch" value="1"/>
+        <ctl name="R Main AMP Enable Switch" value="1"/>
     </path>
 
     <path name="speaker-mono">
-        <ctl name="WSA_CDC_DMA_RX_0 Channels" value="One" />
-        <ctl name="WSA RX0 MUX" value="AIF1_PB" />
-        <ctl name="WSA_RX0 INP0" value="RX0" />
-        <ctl name="WSA_COMP1 Switch" value="1" />
-        <ctl name="SpkrLeft COMP Switch" value="1" />
-        <ctl name="SpkrLeft BOOST Switch" value="1" />
-        <ctl name="SpkrLeft VISENSE Switch" value="1" />
-        <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
+        <ctl name="Main AMP Enable Switch" value="0"/>
+        <ctl name="R Main AMP Enable Switch" value="1"/>
     </path>
 
     <path name="speaker-mono-2">
@@ -1944,6 +2032,9 @@
         <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
     </path>
 
+    <path name="speaker-safe">
+        <path name="speaker-mono"/>
+    </path>
 
     <path name="speaker-hdk">
         <path name="speaker-mono" />
@@ -2616,7 +2707,19 @@
     </path>
 
     <path name="mmap-playback">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia16" value="1" />
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia16" value="1" />
+    </path>
+
+    <path name="mmap-playback handset">
+        <ctl name="QUIN_TDM_RX_0 Audio Mixer MultiMedia16" value="1" />
+    </path>
+
+    <path name="mmap-playback speaker">
+        <path name="mmap-playback" />
+    </path>
+
+    <path name="mmap-playback speaker-safe">
+        <path name="mmap-playback" />
     </path>
 
     <path name="mmap-playback headphones">
