@@ -16,7 +16,18 @@
 
 PRODUCT_HARDWARE := bramble
 
-include device/google/bramble/device-common.mk
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/google/bramble-kernel/Image.lz4
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_VENDOR_KERNEL_HEADERS := device/google/bramble-kernel/sm7250/kernel-headers
+
+include device/google/redbull/device-common.mk
+
+PRODUCT_SOONG_NAMESPACES += \
+    device/google/bramble
 
 DEVICE_PACKAGE_OVERLAYS += device/google/bramble/bramble/overlay
 
@@ -36,3 +47,44 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
+# LOCAL_PATH is device/google/redbull before this
+LOCAL_PATH := device/google/bramble
+
+ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble.mk),)
+    BUILD_WITHOUT_VENDOR := true
+endif
+
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.2-service.bramble
+
+# Vibrator HAL
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.3-service.bramble
+
+# Dumpstate HAL
+PRODUCT_PACKAGES += \
+    android.hardware.dumpstate@1.0-service.bramble
+
+#per device
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bramble/init.bramble.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.bramble.rc
+
+# insmod files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.insmod.bramble.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.bramble.cfg
+
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.recovery.device.rc:recovery/root/init.recovery.bramble.rc \
+    $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE).conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE).conf
+
+PRODUCT_PACKAGES += \
+    sensors.$(PRODUCT_HARDWARE) \
+
+# Thermal HAL config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/thermal_info_config_$(PRODUCT_HARDWARE).json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
+
+# Audio effects
+PRODUCT_PACKAGES += \
+    libqcomvoiceprocessingdescriptors
