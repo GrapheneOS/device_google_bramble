@@ -15,7 +15,7 @@
 #
 
 TARGET_BOOTLOADER_BOARD_NAME := bramble
-TARGET_SCREEN_DENSITY := 560
+TARGET_SCREEN_DENSITY := 420
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
 
 include device/google/redbull/BoardConfig-common.mk
