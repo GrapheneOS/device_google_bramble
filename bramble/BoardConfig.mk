@@ -76,6 +76,3 @@ endif
 #BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
 
 -include vendor/google_devices/bramble/proprietary/BoardConfigVendor.mk
-
-# TODO(b/131162102): remove this after cleaning up accesses of sysprop
-BUILD_BROKEN_TREBLE_SYSPROP_NEVERALLOW := true
