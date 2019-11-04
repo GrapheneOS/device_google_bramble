@@ -206,7 +206,9 @@
     <!-- Multimode Voice1 -->
     <ctl name="WSA_CDC_DMA_RX_0_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="RX_CDC_DMA_RX_0_Voice Mixer VoiceMMode1" value="0" />
+    <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="0" />
+    <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="0" />
     <!-- Multimode Voice1 BTSCO -->
     <ctl name="SLIM_7_RX_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="VoiceMMode1_Tx Mixer SLIM_7_TX_MMode1" value="0" />
@@ -222,7 +224,9 @@
     <!-- Multimode Voice2 -->
     <ctl name="WSA_CDC_DMA_RX_0_Voice Mixer VoiceMMode2" value="0" />
     <ctl name="RX_CDC_DMA_RX_0_Voice Mixer VoiceMMode2" value="0" />
-    <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="0" />
+    <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode2" value="0" />
+    <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="0" />
+    <ctl name="VoiceMMode2_Tx Mixer PRI_TDM_TX_0_MMode2" value="0" />
     <!-- Multimode Voice2 BTSCO -->
     <ctl name="SLIM_7_RX_Voice Mixer VoiceMMode2" value="0" />
     <ctl name="VoiceMMode2_Tx Mixer SLIM_7_TX_MMode2" value="0" />
@@ -1849,23 +1853,23 @@
     </path>
 
     <path name="voicemmode1-call">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1" />
-        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1" />
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode1" value="1" />
+        <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="1" />
     </path>
 
     <path name="voicemmode1-call handset">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1"/>
-        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1"/>
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode1" value="1"/>
+        <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="1"/>
     </path>
 
     <path name="voicemmode1-call speaker">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode1" value="1"/>
-        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1"/>
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode1" value="1"/>
+        <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="1"/>
     </path>
 
     <path name="voicemmode1-call headphones">
         <ctl name="RX_CDC_DMA_RX_0_Voice Mixer VoiceMMode1" value="1" />
-        <ctl name="VoiceMMode1_Tx Mixer TX_CDC_DMA_TX_3_MMode1" value="1" />
+        <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="1" />
     </path>
 
     <path name="voicemmode1-call bt-sco">
@@ -1908,23 +1912,23 @@
     </path>
 
     <path name="voicemmode2-call">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
-        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer PRI_TDM_TX_0_MMode2" value="1" />
     </path>
 
     <path name="voicemmode2-call handset">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
-        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer PRI_TDM_TX_0_MMode2" value="1" />
     </path>
 
     <path name="voicemmode2-call speaker">
-        <ctl name="QUIN_TDM_RX_0 Voice Mixer VoiceMMode2" value="1" />
-        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+        <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer PRI_TDM_TX_0_MMode2" value="1" />
     </path>
 
     <path name="voicemmode2-call headphones">
         <ctl name="RX_CDC_DMA_RX_0_Voice Mixer VoiceMMode2" value="1" />
-        <ctl name="VoiceMMode2_Tx Mixer TX_CDC_DMA_TX_3_MMode2" value="1" />
+        <ctl name="VoiceMMode2_Tx Mixer PRI_TDM_TX_0_MMode2" value="1" />
     </path>
 
     <path name="voicemmode2-call bt-sco">
@@ -2112,6 +2116,14 @@
         <ctl name="TX DMIC MUX0" value="DMIC5" />
     </path>
 
+    <path name="dmic-endfire">
+        <ctl name="ADC1 Capture Volume" id="0" value="45"/>
+        <ctl name="ADC2 Capture Volume" id="0" value="45"/>
+        <ctl name="PRI_TDM_TX_0 Channels" value="Two"/>
+        <ctl name="Sto1 ADC MIXL DMIC Switch" value="1" />
+        <ctl name="Sto2 ADC MIXL DMIC Switch" value="1" />
+    </path>
+
     <path name="handset">
         <ctl name="Main AMP Enable Switch" value="1"/>
         <ctl name="R Main AMP Enable Switch" value="0"/>
@@ -2177,7 +2189,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="dmic5" />
+        <path name="dmic-endfire" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -2210,18 +2222,6 @@
     </path>
 
     <path name="vi-feedback-mono-2">
-    </path>
-
-    <path name="handset">
-        <ctl name="WSA_CDC_DMA_RX_0 Channels" value="One" />
-        <ctl name="WSA RX0 MUX" value="AIF1_PB" />
-        <ctl name="WSA_RX0 INP0" value="RX0" />
-        <ctl name="WSA_COMP1 Switch" value="1" />
-        <ctl name="SpkrLeft COMP Switch" value="1" />
-        <ctl name="SpkrLeft BOOST Switch" value="1" />
-        <ctl name="SpkrLeft VISENSE Switch" value="1" />
-        <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
-        <ctl name="EAR SPKR PA Gain" value="G_6_DB" />
     </path>
 
     <path name="handset-mic">
@@ -2311,7 +2311,7 @@
         <path name="handset" />
     </path>
     <path name="voice-speaker">
-        <path name="speaker-mono" />
+        <path name="speaker" />
     </path>
 
     <path name="voice-speaker-stereo">
@@ -2454,14 +2454,6 @@
         <ctl name="Sto1 ADC MIXL DMIC Switch" value="1" />
         <ctl name="Sto2 ADC MIXL DMIC Switch" value="1" />
         <ctl name="Sto2 ADC MIXR DMIC Switch" value="0" />
-    </path>
-
-    <path name="dmic-endfire">
-        <ctl name="ADC1 Capture Volume" id="0" value="45"/>
-        <ctl name="ADC2 Capture Volume" id="0" value="45"/>
-        <ctl name="PRI_TDM_TX_0 Channels" value="Two"/>
-        <ctl name="Sto1 ADC MIXL DMIC Switch" value="1" />
-        <ctl name="Sto2 ADC MIXL DMIC Switch" value="1" />
     </path>
 
     <path name="dmic-endfire-liquid">
