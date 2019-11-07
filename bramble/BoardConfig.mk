@@ -18,6 +18,8 @@ TARGET_BOOTLOADER_BOARD_NAME := bramble
 TARGET_SCREEN_DENSITY := 420
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
 
+CAMERA_VSYNC_COUNT := 2
+
 include device/google/redbull/BoardConfig-common.mk
 include device/google/bramble-sepolicy/bramble-sepolicy.mk
 
