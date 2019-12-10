@@ -196,7 +196,7 @@
             "Multiplier":0.001
         },
         {
-            "Name":"wifi-therm-monitor",
+            "Name":"skin-therm-monitor",
             "Type":"SKIN",
             "HotThreshold":[
                 "NAN",
