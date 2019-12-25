@@ -87,6 +87,9 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.2-service.bramble
 
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service.bramble
+
 # Vibrator HAL
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.3-service.bramble
