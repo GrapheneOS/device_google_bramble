@@ -31,13 +31,6 @@ TARGET_BOARD_COMMON_PATH := device/google/bramble/sm7250
 # DTBO partition definitions
 BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/dtbo.img
 
-TARGET_RECOVERY_UI_LIB := \
-  librecovery_ui_bramble \
-  libnos_citadel_for_recovery \
-  libnos_for_recovery \
-  libbootloader_message \
-  libfstab
-
 TARGET_FS_CONFIG_GEN := device/google/bramble/config.fs
 
 # Kernel modules
