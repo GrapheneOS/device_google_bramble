@@ -527,8 +527,8 @@
     <ctl name="R ASP TX4 Source" value="Zero" />
     <!-- CS35L41 TX source end -->
     <!-- CS35L41 TX slot(to QCT ADSP) -->
-    <ctl name="ASPTX1 Slot Position" value="0" />
-    <ctl name="R ASPTX1 Slot Position" value="1" />
+    <ctl name="ASPTX1 Slot Position" value="1" />
+    <ctl name="R ASPTX1 Slot Position" value="0" />
     <ctl name="ASPTX2 Slot Position" value="4" />
     <ctl name="R ASPTX2 Slot Position" value="5" />
     <ctl name="ASPTX3 Slot Position" value="2" />
@@ -1413,6 +1413,7 @@
     </path>
 
     <path name="voicemmode1-call speaker">
+        <ctl name="VOC_EXT_EC MUX" value="QUIN_TDM_TX" />
         <ctl name="QUIN_TDM_RX_0_Voice Mixer VoiceMMode1" value="1"/>
         <ctl name="VoiceMMode1_Tx Mixer PRI_TDM_TX_0_MMode1" value="1"/>
     </path>
@@ -1765,8 +1766,8 @@
     </path>
 
     <path name="dmic-endfire">
-        <ctl name="ADC1 Capture Volume" id="0" value="47"/>
-        <ctl name="ADC2 Capture Volume" id="0" value="47"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="55"/>
+        <ctl name="ADC2 Capture Volume" id="0" value="55"/>
         <ctl name="PRI_TDM_TX_0 Channels" value="Two"/>
     </path>
 
@@ -1943,19 +1944,19 @@
     <path name="voice-handset">
         <path name="handset" />
         <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="6.5" />
+        <ctl name="AMP PCM Gain" value="8" />
     </path>
 
     <path name="voice-handset-tmus">
         <path name="handset" />
         <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="6.5" />
+        <ctl name="AMP PCM Gain" value="8" />
     </path>
 
     <path name="voice-hac-handset">
         <path name="handset" />
         <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="6.5" />
+        <ctl name="AMP PCM Gain" value="6" />
     </path>
 
     <path name="voice-handset-hdk">
@@ -2012,7 +2013,7 @@
 
     <path name="voice-headset-mic">
         <path name="amic2" />
-        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="ADC2 Volume" value="12" />
         <ctl name="TX_DEC0 Volume" value="84" />
     </path>
 
@@ -2104,11 +2105,10 @@
     </path>
 
     <path name="speaker-dmic-endfire">
-        <ctl name="ADC1 Capture Volume" id="0" value="45"/>
-        <ctl name="ADC2 Capture Volume" id="0" value="45"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="47"/>
+        <ctl name="ADC2 Capture Volume" id="0" value="47"/>
         <ctl name="PRI TDM TX Channel Offset" id="0" value="8" />
         <ctl name="PRI TDM TX Channel Offset" id="1" value="0" />
-        <ctl name="PRI TDM TX Channel Offset" id="2" value="12" />
         <ctl name="PRI_TDM_TX_0 Channels" value="Two"/>
     </path>
 
@@ -2256,6 +2256,8 @@
         <ctl name="HPHR_COMP Switch" value="1" />
         <ctl name="HPHL_RDAC Switch" value="1" />
         <ctl name="HPHR_RDAC Switch" value="1" />
+        <ctl name="RX_RX0 Digital Volume" value="79" />
+        <ctl name="RX_RX1 Digital Volume" value="79" />
     </path>
 
     <path name="voice-tty-full-headphones">
@@ -2281,8 +2283,8 @@
 
     <path name="voice-tty-full-headset-mic">
         <path name="amic2" />
-        <ctl name="ADC2 Volume" value="0" />
-        <ctl name="TX_DEC0 Volume" value="84" />
+        <ctl name="ADC2 Volume" value="12" />
+        <ctl name="TX_DEC0 Volume" value="88" />
     </path>
 
     <path name="voice-tty-hco-headset-mic">
