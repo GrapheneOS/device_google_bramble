@@ -102,7 +102,7 @@ PRODUCT_PACKAGES += \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.bramble
+    android.hardware.dumpstate@1.1-service.bramble
 
 #per device
 PRODUCT_COPY_FILES += \
