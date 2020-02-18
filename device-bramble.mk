@@ -34,9 +34,6 @@ PRODUCT_SOONG_NAMESPACES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/google/bramble/bramble/overlay
 
-PRODUCT_PACKAGES += \
-    TelephonyOverlay2020Bramble
-
 # Audio XMLs for bramble
 
 PRODUCT_COPY_FILES += \
