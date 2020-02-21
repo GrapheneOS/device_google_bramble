@@ -555,23 +555,33 @@
     </path>
 
     <path name="echo-reference handset">
-        <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUIN_TDM_TX_0" />
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUIN_TDM_RX_0" />
         <ctl name="EC Reference Channels" value="One"/>
     </path>
 
     <path name="echo-reference speaker">
-        <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUIN_TDM_TX_0"/>
-        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUIN_TDM_TX_0" />
+        <ctl name="EC Reference Channels" value="One"/>
     </path>
 
     <path name="echo-reference headphones">
         <ctl name="AUDIO_REF_EC_UL10 MUX" value="RX_CDC_DMA_RX_0" />
-        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="EC Reference Channels" value="One"/>
     </path>
 
     <path name="echo-reference headset">
         <path name="echo-reference headphones" />
     </path>
+
+     <path name="echo-reference usb-headset">
+         <ctl name="AUDIO_REF_EC_UL10 MUX" value="USB_AUDIO_RX" />
+         <ctl name="EC Reference Channels" value="Two"/>
+     </path>
+
+     <path name="echo-reference usb-headphones">
+         <ctl name="AUDIO_REF_EC_UL10 MUX" value="USB_AUDIO_RX" />
+         <ctl name="EC Reference Channels" value="Two"/>
+     </path>
 
     <path name="echo-reference display-port">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="DISPLAY_PORT" />
@@ -1905,6 +1915,7 @@
         <ctl name="RX_MACRO RX0 MUX" value="AIF1_PB" />
         <ctl name="RX_MACRO RX1 MUX" value="AIF1_PB" />
         <ctl name="RX_CDC_DMA_RX_0 Channels" value="Two" />
+        <ctl name="RX_CDC_DMA_RX_0 Format" value="S24_3LE" />
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT1_1 MIX1 INP0" value="RX1" />
         <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
@@ -1940,7 +1951,8 @@
 
     <path name="headset-mic">
         <path name="amic2" />
-        <ctl name="TX_DEC0 Volume" value="84" />
+        <ctl name="ADC2 Volume" value="12" />
+        <ctl name="TX_DEC0 Volume" value="70" />
     </path>
 
     <path name="headset-mic-liquid">
@@ -1950,13 +1962,13 @@
     <path name="voice-handset">
         <path name="handset" />
         <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="8" />
+        <ctl name="AMP PCM Gain" value="10" />
     </path>
 
     <path name="voice-handset-tmus">
         <path name="handset" />
         <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="8" />
+        <ctl name="AMP PCM Gain" value="10" />
     </path>
 
     <path name="voice-hac-handset">
@@ -2007,6 +2019,8 @@
 
     <path name="voice-headphones">
         <path name="headphones" />
+        <ctl name="RX_RX0 Digital Volume" value="80" />
+        <ctl name="RX_RX1 Digital Volume" value="80" />
     </path>
 
     <path name="voice-headset">
@@ -2018,9 +2032,7 @@
     </path>
 
     <path name="voice-headset-mic">
-        <path name="amic2" />
-        <ctl name="ADC2 Volume" value="12" />
-        <ctl name="TX_DEC0 Volume" value="84" />
+        <path name="headset-mic" />
     </path>
 
     <path name="speaker-and-headphones">
