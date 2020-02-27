@@ -1,0 +1,13 @@
+{
+  "postsubmit": [
+    {
+      "name": "VibratorHalIntegrationBenchmarkBramble"
+    },
+    {
+      "name": "VibratorHalIntegrationBenchmarkBramble",
+      "keywords": [
+        "primary-device"
+      ]
+    }
+  ]
+}
