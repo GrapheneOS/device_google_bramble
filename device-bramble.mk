@@ -91,7 +91,8 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.2-service.bramble
 
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.bramble
+    android.hardware.health@2.1-impl-bramble \
+    android.hardware.health@2.1-service
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
