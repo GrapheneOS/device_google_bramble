@@ -1949,6 +1949,8 @@
     <path name="handset">
         <ctl name="Main AMP Enable Switch" value="1"/>
         <ctl name="R Main AMP Enable Switch" value="0"/>
+        <ctl name="PCM Source" value="ASP" />
+        <ctl name="AMP PCM Gain" value="10" />
     </path>
 
     <path name="speaker">
@@ -1973,7 +1975,6 @@
     <path name="speaker-reverse">
         <path name="speaker"/>
     </path>
-
 
     <path name="speaker-hdk">
         <path name="speaker-mono" />
@@ -2124,7 +2125,7 @@
     <path name="headset-mic">
         <path name="amic2" />
         <ctl name="ADC2 Volume" value="12" />
-        <ctl name="TX_DEC0 Volume" value="70" />
+        <ctl name="TX_DEC0 Volume" value="84" />
     </path>
 
     <path name="headset-mic-liquid">
@@ -2133,19 +2134,14 @@
 
     <path name="voice-handset">
         <path name="handset" />
-        <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="10" />
     </path>
 
     <path name="voice-handset-tmus">
         <path name="handset" />
-        <ctl name="PCM Source" value="ASP" />
-        <ctl name="AMP PCM Gain" value="10" />
     </path>
 
     <path name="voice-hac-handset">
         <path name="handset" />
-        <ctl name="PCM Source" value="ASP" />
         <ctl name="AMP PCM Gain" value="6" />
     </path>
 
@@ -2191,8 +2187,8 @@
 
     <path name="voice-headphones">
         <path name="headphones" />
-        <ctl name="RX_RX0 Digital Volume" value="80" />
-        <ctl name="RX_RX1 Digital Volume" value="80" />
+        <ctl name="RX_RX0 Digital Volume" value="84" />
+        <ctl name="RX_RX1 Digital Volume" value="84" />
     </path>
 
     <path name="voice-headset">
