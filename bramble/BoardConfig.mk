@@ -52,6 +52,8 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/*.ko)
 endif
 
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/modules.load)
+
 # DTB
 ifeq (,$(filter-out bramble_kasan, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/kasan
