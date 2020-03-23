@@ -33,22 +33,22 @@ TARGET_FS_CONFIG_GEN := device/google/bramble/config.fs
 
 # Kernel modules
 ifeq (,$(filter-out bramble_kasan, $(TARGET_PRODUCT)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/kasan/*.ko)
 else ifeq (,$(filter-out bramble_kernel_debug_memory, $(TARGET_PRODUCT)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_memory/*.ko)
 else ifeq (,$(filter-out bramble_kernel_debug_locking, $(TARGET_PRODUCT)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_locking/*.ko)
 else ifeq (,$(filter-out bramble_kernel_debug_hang, $(TARGET_PRODUCT)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_hang/*.ko)
 else ifeq (,$(filter-out bramble_kernel_debug_api, $(TARGET_PRODUCT)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_api/*.ko)
 else
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/*.ko)
 endif
 
