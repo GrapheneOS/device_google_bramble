@@ -57,8 +57,8 @@ static constexpr char WAVEFORM_DOUBLE_CLICK_EFFECT_SEQ[] = "3 0";
 static constexpr char WAVEFORM_HEAVY_CLICK_EFFECT_SEQ[] = "4 0";
 
 // UT team design those target G values
-static constexpr std::array<float, 5> EFFECT_TARGET_G = {0.175, 0.325, 0.37, 0.475, 0.6};
-static constexpr std::array<float, 3> STEADY_TARGET_G = {1.6, 1.145, 0.4};
+static constexpr std::array<float, 5> EFFECT_TARGET_G = {0.22, 0.35, 0.42, 0.57, 0.67};
+static constexpr std::array<float, 3> STEADY_TARGET_G = {1.2, 1.145, 0.4};
 
 struct SensorContext {
     ASensorEventQueue *queue;
