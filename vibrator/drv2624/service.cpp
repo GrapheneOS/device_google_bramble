@@ -46,7 +46,9 @@ status_t registerVibratorService() {
 }
 
 int main() {
-    configureRpcThreadpool(1, true);
+    // One thread for vibrator APIs and one for sensor callback
+    // WARN: there could be an issue if two vibrator APIs are called simultaneously
+    configureRpcThreadpool(2, true);
     status_t status = registerVibratorService();
 
     if (status != OK) {
