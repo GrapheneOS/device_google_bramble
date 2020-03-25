@@ -83,8 +83,7 @@
     </string>
 
     <!-- Camera 1 is the front camera on bramble -->
-    <!-- TODO b/151706640 uncomment after protectedCameraId mechanism is ready in rvc-->
-    <!--<string translatable="false" name="config_protectedCameraId">1</string>-->
+    <string translatable="false" name="config_protectedCameraId">1</string>
 
     <bool name="config_enableDisplayCutoutProtection">true</bool>
 </resources>
