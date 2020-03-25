@@ -16,6 +16,8 @@
 
 #include "Vibrator.h"
 
+#include <android/looper.h>
+#include <android/sensor.h>
 #include <cutils/properties.h>
 #include <hardware/hardware.h>
 #include <hardware/vibrator.h>
@@ -26,6 +28,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <numeric>
 
 #include "utils.h"
 
@@ -55,9 +58,79 @@ static constexpr char WAVEFORM_HEAVY_CLICK_EFFECT_SEQ[] = "4 0";
 
 // UT team design those target G values
 static constexpr std::array<float, 5> EFFECT_TARGET_G = {0.175, 0.325, 0.37, 0.475, 0.6};
-static constexpr std::array<float, 3> STEADY_TARGET_G = {1.38, 1.145, 0.905};
+static constexpr std::array<float, 3> STEADY_TARGET_G = {1.6, 1.145, 0.4};
+
+struct SensorContext {
+    ASensorEventQueue *queue;
+};
+static std::vector<float> sXAxleData;
+static std::vector<float> sYAxleData;
+static uint64_t sEndTime = 0;
+static struct timespec sGetTime;
 
 #define FLOAT_EPS 1e-7
+#define SENSOR_DATA_NUM 20
+// Set sensing period to 2s
+#define SENSING_PERIOD 2000000000
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+
+int GSensorCallback(__attribute__((unused)) int fd, __attribute__((unused)) int events,
+                    void *data) {
+    ASensorEvent event;
+    int event_count = 0;
+    SensorContext *context = reinterpret_cast<SensorContext *>(data);
+    event_count = ASensorEventQueue_getEvents(context->queue, &event, 1);
+    ALOGI("%s: event data: %f %f\n", __func__, event.data[0], event.data[1]);
+    sXAxleData.push_back(event.data[0]);
+    sYAxleData.push_back(event.data[1]);
+    return 1;
+}
+// TODO: b/152305970
+int32_t PollGSensor() {
+    int err = NO_ERROR, counter = 0;
+    ASensorManager *sensorManager = nullptr;
+    ASensorRef GSensor;
+    ALooper *looper;
+    struct SensorContext context = {nullptr};
+
+    // Get proximity sensor events from the NDK
+    sensorManager = ASensorManager_getInstanceForPackage("");
+    if (!sensorManager) {
+        ALOGI("Chase %s: Sensor manager is NULL.\n", __FUNCTION__);
+        err = UNEXPECTED_NULL;
+        return 0;
+    }
+    GSensor = ASensorManager_getDefaultSensor(sensorManager, ASENSOR_TYPE_GRAVITY);
+    if (GSensor == nullptr) {
+        ALOGE("%s:Chase Unable to get g sensor\n", __func__);
+    } else {
+        looper = ALooper_forThread();
+        if (looper == nullptr) {
+            looper = ALooper_prepare(ALOOPER_PREPARE_ALLOW_NON_CALLBACKS);
+        }
+        context.queue =
+            ASensorManager_createEventQueue(sensorManager, looper, 0, GSensorCallback, &context);
+
+        err = ASensorEventQueue_registerSensor(context.queue, GSensor, 0, 0);
+        if (err != NO_ERROR) {
+            ALOGE("Chase %s: Error %d registering G sensor with event queue.\n", __FUNCTION__, err);
+            return 0;
+        }
+        if (err < 0) {
+            ALOGE("%s:Chase Unable to register for G sensor events\n", __func__);
+        } else {
+            for (counter = 0; counter < SENSOR_DATA_NUM; counter++) {
+                ALooper_pollOnce(5, nullptr, nullptr, nullptr);
+            }
+        }
+    }
+    if (sensorManager != nullptr && context.queue != nullptr) {
+        ASensorEventQueue_disableSensor(context.queue, GSensor);
+        ASensorManager_destroyEventQueue(sensorManager, context.queue);
+    }
+
+    return 0;
+}
 
 // Temperature protection upper bound 10°C and lower bound 5°C
 static constexpr int32_t TEMP_UPPER_BOUND = 10000;
@@ -170,6 +243,30 @@ static float targetGToVlevelsUnderCubicEquation(std::array<float, 4> inputCoeffs
     } else {
         // Exception handling
         return 0.0f;
+    }
+}
+
+static bool motionAwareness() {
+    float avgX = 0.0, avgY = 0.0;
+    uint64_t current_time = 0;
+    clock_gettime(CLOCK_MONOTONIC, &sGetTime);
+    current_time = ((uint64_t)sGetTime.tv_sec * 1000 * 1000 * 1000) + sGetTime.tv_nsec;
+
+    if ((current_time - sEndTime) > SENSING_PERIOD) {
+        sXAxleData.clear();
+        sYAxleData.clear();
+        PollGSensor();
+        avgX = std::accumulate(sXAxleData.begin(), sXAxleData.end(), 0.0) / sXAxleData.size();
+        avgY = std::accumulate(sYAxleData.begin(), sYAxleData.end(), 0.0) / sYAxleData.size();
+        clock_gettime(CLOCK_MONOTONIC, &sGetTime);
+
+        sEndTime = ((uint64_t)sGetTime.tv_sec * 1000 * 1000 * 1000) + sGetTime.tv_nsec;
+    }
+
+    if ((avgX > -1.3) && (avgX < 1.3) && (avgY > -0.8) && (avgY < 0.8)) {
+        return false;
+    } else {
+        return true;
     }
 }
 
@@ -329,6 +426,9 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
         if (temperature > TEMP_UPPER_BOUND) {
             mSteadyConfig->odClamp = &mSteadyTargetOdClamp[0];
             mSteadyConfig->olLraPeriod = mSteadyOlLraPeriod;
+            if (!motionAwareness()) {
+                return on(timeoutMs, RTP_MODE, mSteadyConfig, 2);
+            }
         } else if (temperature < TEMP_LOWER_BOUND) {
             mSteadyConfig->odClamp = &STEADY_VOLTAGE_LOWER_BOUND;
             mSteadyConfig->olLraPeriod = mSteadyOlLraPeriodShift;
