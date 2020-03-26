@@ -28,20 +28,11 @@ cc_defaults {
     ],
 }
 
-cc_defaults {
-    name: "VibratorHalDrv2624TestDefaultsBramble",
-    defaults: ["android.hardware.vibrator@1.3-defaults.bramble"],
-    static_libs: ["android.hardware.vibrator@1.3-impl.bramble"],
-    test_suites: ["device-tests"],
-    require_root: true,
-}
-
 cc_library {
     name: "android.hardware.vibrator@1.3-impl.bramble",
     defaults: ["android.hardware.vibrator@1.3-defaults.bramble"],
     srcs: ["Vibrator.cpp"],
     export_include_dirs: ["."],
-    vendor_available: true,
 }
 
 cc_binary {

@@ -27,5 +27,7 @@ cc_defaults {
         "liblog",
         "libutils",
         "libhardware",
+        "libsensorndkbridge",
     ],
+    proprietary: true,
 }
