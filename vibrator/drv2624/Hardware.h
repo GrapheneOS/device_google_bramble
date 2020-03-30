@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef ANDROID_HARDWARE_VIBRATOR_HARDWARE_H
-#define ANDROID_HARDWARE_VIBRATOR_HARDWARE_H
+#pragma once
 
 #include "../common/HardwareBase.h"
 #include "Vibrator.h"
 
+namespace aidl {
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_3 {
-namespace implementation {
-
-using common::implementation::HwApiBase;
-using common::implementation::HwCalBase;
 
 class HwApi : public Vibrator::HwApi, private HwApiBase {
   public:
@@ -74,6 +69,12 @@ class HwApi : public Vibrator::HwApi, private HwApiBase {
         open("device/od_clamp", &mOdClamp);
         // TODO: for future new architecture: b/149610125
         openFull("/sys/devices/virtual/thermal/tz-by-name/rf-front-therm/temp", &mPATemp);
+    }
+
+    template <typename T>
+    void openFull(const std::string &name, T *stream) {
+        saveName(name, stream);
+        utils::openNoCreate(name, stream);
     }
 
   private:
@@ -181,10 +182,7 @@ class HwCal : public Vibrator::HwCal, private HwCalBase {
     void debug(int fd) override { HwCalBase::debug(fd); }
 };
 
-}  // namespace implementation
-}  // namespace V1_3
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
-
-#endif  // ANDROID_HARDWARE_VIBRATOR_HARDWARE_H
+}  // namespace aidl
