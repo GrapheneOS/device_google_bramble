@@ -1,4 +1,4 @@
-service vendor.vibrator-1-3 /vendor/bin/hw/android.hardware.vibrator@1.3-service.bramble
+service vendor.vibrator.bramble /vendor/bin/hw/android.hardware.vibrator-service.bramble
     class hal
     user system
     group system
