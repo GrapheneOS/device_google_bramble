@@ -92,7 +92,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.3-service.bramble
+    android.hardware.vibrator-service.bramble
 
 # DRV2624 Haptics Waveform
 PRODUCT_COPY_FILES += \
