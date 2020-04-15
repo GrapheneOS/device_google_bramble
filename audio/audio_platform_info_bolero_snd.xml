@@ -58,7 +58,7 @@
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="115"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" acdb_id="116"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_STEREO" acdb_id="19"/>
-        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="8"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="44"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="44"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC_NREC" acdb_id="122"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC_WB_NREC" acdb_id="123"/>
@@ -71,7 +71,7 @@
         <device name="SND_DEVICE_IN_VOICE_DMIC_TMUS" acdb_id="99"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="19"/>
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="143"/>
-        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="143"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="107"/>
         <device name="SND_DEVICE_IN_VOICE_REC_MIC_AEC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_VOICE_REC_MIC_AEC_NS" acdb_id="143"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" acdb_id="143"/>
@@ -89,7 +89,7 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" acdb_id="145"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" acdb_id="147"/>
-        <device name="SND_DEVICE_IN_USB_HEADSET_MIC" acdb_id="143"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC" acdb_id="44"/>
         <device name="SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC" acdb_id="19"/>
         <device name="SND_DEVICE_IN_VOICE_TTY_VCO_SPEAKER_MIC" acdb_id="19"/>
     </acdb_ids>
@@ -167,13 +167,16 @@
         <param key="true_32_bit" value="true"/>
         <!-- In the below value string, the value indicates sidetone gain in dB -->
         <param key="usb_sidetone_gain" value="35"/>
-        <param key="operator_info" value="Sprint;310002;310120"/>
+        <param key="operator_info" value="Sprint;310002;310120;312530"/>
     </config_params>
     <operator_specific>
        <device name="SND_DEVICE_IN_VOICE_DMIC" operator="Sprint" mixer_path="voice-dmic-ef" acdb_id="79"/>
        <device name="SND_DEVICE_OUT_VOICE_HANDSET" operator="Sprint" mixer_path="voice-handset" acdb_id="80"/>
        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" operator="Sprint" mixer_path="voice-speaker-dmic-ef" acdb_id="81"/>
        <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED" operator="Sprint" mixer_path="voice-speaker" acdb_id="82"/>
+       <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" operator="Sprint" mixer_path="voice-headset-mic" acdb_id="94"/>
+       <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" operator="Sprint" mixer_path="voice-headphones" acdb_id="53"/>
+       <device name="SND_DEVICE_OUT_VOICE_HEADSET" operator="Sprint" mixer_path="voice-headphones" acdb_id="53"/>
     </operator_specific>
     <gain_db_to_level_mapping>
         <gain_level_map db="-59" level="5"/>
