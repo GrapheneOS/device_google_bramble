@@ -154,3 +154,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint HIDL
 include device/google/bramble/fingerprint.mk
+
+# NFC
+PRODUCT_COPY_FILES += \
+    device/google/bramble/nfc/libnfc-hal-st-G6QU3.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st-G6QU3.conf
