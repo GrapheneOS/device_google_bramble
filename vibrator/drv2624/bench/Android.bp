@@ -13,3 +13,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+cc_benchmark {
+    name: "VibratorHalDrv2624BenchmarkBramble",
+    defaults: ["VibratorHalDrv2624TestDefaultsBramble"],
+    srcs: [
+        "benchmark.cpp",
+    ],
+    static_libs: [
+        "libc++fs",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    // TODO(b/135767253): Remove when fixed.
+    test_suites: ["device-tests"],
+    // TODO(b/142024316): Remove when fixed.
+    require_root: true,
+}
