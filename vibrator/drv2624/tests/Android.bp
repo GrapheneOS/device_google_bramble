@@ -13,3 +13,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+cc_test {
+    name: "VibratorHalDrv2624TestSuiteBramble",
+    defaults: ["VibratorHalDrv2624TestDefaultsBramble"],
+    srcs: [
+        "test-hwapi.cpp",
+        "test-hwcal.cpp",
+        "test-vibrator.cpp",
+    ],
+    static_libs: [
+        "libc++fs",
+        "libgmock",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+}
