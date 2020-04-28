@@ -157,3 +157,10 @@ include device/google/bramble/fingerprint.mk
 # NFC
 PRODUCT_COPY_FILES += \
     device/google/bramble/nfc/libnfc-hal-st-G6QU3.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st-G6QU3.conf
+
+# Bluetooth Tx power caps for bramble
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025E.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025I.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025H.csv
