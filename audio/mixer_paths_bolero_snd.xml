@@ -2120,6 +2120,8 @@
 
     <path name="line">
         <path name="headphones" />
+        <ctl name="RX_RX0 Digital Volume" value="84" />
+        <ctl name="RX_RX1 Digital Volume" value="84" />
     </path>
 
     <path name="headset-mic">
@@ -2245,7 +2247,7 @@
 
     <path name="voice-rec-mic">
         <path name="handset-mic" />
-        <ctl name="ADC1 Capture Volume" id="0" value="53"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="52" />
     </path>
 
     <path name="camcorder-mic">
@@ -2379,6 +2381,8 @@
 
     <path name="voice-rec-dmic-ef">
         <path name="dmic-endfire" />
+        <ctl name="ADC1 Capture Volume" id="0" value="52" />
+        <ctl name="ADC2 Capture Volume" id="0" value="52" />
     </path>
 
     <path name="voice-rec-dmic-ef-fluence">
