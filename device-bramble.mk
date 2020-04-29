@@ -17,7 +17,11 @@
 PRODUCT_HARDWARE := bramble
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/bramble-kernel/Image.lz4
+    ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+        LOCAL_KERNEL := device/google/bramble-kernel/Image.lz4
+    else
+        LOCAL_KERNEL := device/google/bramble-kernel/performance/Image.lz4
+    endif
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
