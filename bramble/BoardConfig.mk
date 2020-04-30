@@ -27,7 +27,11 @@ USES_DEVICE_GOOGLE_BRAMBLE := true
 TARGET_BOARD_COMMON_PATH := device/google/bramble/sm7250
 
 # DTBO partition definitions
-BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/dtbo.img
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+    BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/dtbo.img
+else
+    BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/performance/dtbo.img
+endif
 
 TARGET_FS_CONFIG_GEN := device/google/bramble/config.fs
 
@@ -48,11 +52,20 @@ else ifeq (,$(filter-out bramble_kernel_debug_api, $(TARGET_PRODUCT)))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_api/*.ko)
 else
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-    $(wildcard device/google/bramble-kernel/*.ko)
+    ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+        BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+        $(wildcard device/google/bramble-kernel/*.ko)
+    else
+        BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+        $(wildcard device/google/bramble-kernel/performance/*.ko)
+    endif
 endif
 
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/modules.load)
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+    BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/modules.load)
+else
+    BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/performance/modules.load)
+endif
 
 # DTB
 ifeq (,$(filter-out bramble_kasan, $(TARGET_PRODUCT)))
@@ -66,7 +79,11 @@ BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/debug_hang
 else ifeq (,$(filter-out bramble_kernel_debug_api, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/debug_api
 else
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel
+    ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+        BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel
+    else
+        BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/performance
+    endif
 endif
 
 # Testing related defines
