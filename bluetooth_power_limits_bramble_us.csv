@@ -1,4 +1,4 @@
-Head,BTHotspot,WIFI5Ghz,HotspotVoice,BTMedia,Cell,IMU,BluetoothEDRPower,BluetoothBDRPower,BluetoothLEPower
+Head,BTHotspot,WIFI5Ghz,HotspotVoice,BTMedia,Cell,IMU,BluetoothBDRPower,BluetoothEDRPower,BluetoothLEPower
 0,0,0,0,0,0,1,64,64,52
 0,0,0,0,0,1,1,64,64,52
 0,0,0,0,1,0,1,64,64,52
