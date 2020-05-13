@@ -30,7 +30,7 @@ TARGET_BOARD_COMMON_PATH := device/google/bramble/sm7250
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/dtbo.img
 else
-    BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/performance/dtbo.img
+    BOARD_PREBUILT_DTBOIMAGE := device/google/bramble-kernel/vintf/dtbo.img
 endif
 
 TARGET_FS_CONFIG_GEN := device/google/bramble/config.fs
@@ -57,14 +57,14 @@ else
         $(wildcard device/google/bramble-kernel/*.ko)
     else
         BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-        $(wildcard device/google/bramble-kernel/performance/*.ko)
+        $(wildcard device/google/bramble-kernel/vintf/*.ko)
     endif
 endif
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/modules.load)
 else
-    BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/performance/modules.load)
+    BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/vintf/modules.load)
 endif
 
 # DTB
@@ -82,7 +82,7 @@ else
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
         BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel
     else
-        BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/performance
+        BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/vintf
     endif
 endif
 
