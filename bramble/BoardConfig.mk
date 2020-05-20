@@ -51,6 +51,9 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
 else ifeq (,$(filter-out bramble_kernel_debug_api, $(TARGET_PRODUCT)))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
     $(wildcard device/google/bramble-kernel/debug_api/*.ko)
+else ifeq (,$(filter-out bramble_gki, $(TARGET_PRODUCT)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+    $(wildcard device/google/bramble-kernel/gki/*.ko)
 else
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
         BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
@@ -61,7 +64,9 @@ else
     endif
 endif
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifeq (,$(filter-out bramble_gki, $(TARGET_PRODUCT)))
+    BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/gki/modules.load)
+else ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/modules.load)
 else
     BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(shell xargs < device/google/bramble-kernel/vintf/modules.load)
@@ -78,6 +83,8 @@ else ifeq (,$(filter-out bramble_kernel_debug_hang, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/debug_hang
 else ifeq (,$(filter-out bramble_kernel_debug_api, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/debug_api
+else ifeq (,$(filter-out bramble_gki, $(TARGET_PRODUCT)))
+BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel/gki
 else
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
         BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel
