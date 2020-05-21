@@ -114,10 +114,6 @@ PRODUCT_PRODUCT_PROPERTIES +=\
     ro.vibrator.hal.lptrigger=0
 
 
-# Hint expensive blurs for device with larger display
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.sf.blurs_are_expensive=1
-
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.1-service.bramble
