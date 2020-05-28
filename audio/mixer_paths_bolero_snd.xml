@@ -247,6 +247,8 @@
     <ctl name="VoiceMMode2_Tx Mixer PROXY_TX_MMode2" value="0" />
     <!-- Multimode Voice2 end-->
 
+    <ctl name="CALL EN" value="0" />
+
     <!-- Voice external ec. reference -->
     <ctl name="VOC_EXT_EC MUX" value="NONE" />
     <!-- Voice external ec. reference end -->
@@ -2164,23 +2166,28 @@
 
     <path name="voice-handset">
         <path name="handset" />
+        <ctl name="CALL EN" value="1" />
     </path>
 
     <path name="voice-handset-tmus">
         <path name="handset" />
+        <ctl name="CALL EN" value="1" />
     </path>
 
     <path name="voice-hac-handset">
         <path name="handset" />
         <ctl name="AMP PCM Gain" value="6" />
+        <ctl name="CALL EN" value="1" />
     </path>
 
     <path name="voice-handset-hdk">
         <path name="handset" />
+        <ctl name="CALL EN" value="1" />
     </path>
 
     <path name="voice-handset-tmus-hdk">
         <path name="handset" />
+        <ctl name="CALL EN" value="1" />
     </path>
 
     <path name="voice-speaker">
