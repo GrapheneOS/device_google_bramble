@@ -69,6 +69,9 @@ else
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/bramble-kernel
 endif
 
+# Allow LZ4 compression
+BOARD_RAMDISK_USE_LZ4 := true
+
 # Testing related defines
 #BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
 
