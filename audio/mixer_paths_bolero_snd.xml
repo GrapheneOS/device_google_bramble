@@ -387,6 +387,7 @@
     <ctl name="TX DEC7 MUX" value="MSM_DMIC" />
     <ctl name="TX DMIC MUX7" value="ZERO" />
     <ctl name="TX SMIC MUX7" value="ZERO" />
+    <ctl name="DEC0_BCS Switch" value="1" />
 
     <!-- Volume controls -->
     <ctl name="WSA_RX0 Digital Volume" value="84" />
@@ -2392,6 +2393,8 @@
 
     <path name="handset-stereo-dmic-ef">
         <path name="handset-dmic-endfire" />
+        <ctl name="ADC1 Capture Volume" id="0" value="23"/>
+        <ctl name="ADC2 Capture Volume" id="0" value="23"/>
     </path>
 
     <path name="speaker-stereo-dmic-ef">
@@ -2575,18 +2578,18 @@
 
     <path name="unprocessed-handset-mic">
         <path name="handset-mic" />
-        <ctl name="ADC1 Capture Volume" id="0" value="27"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="30"/>
     </path>
 
     <path name="unprocessed-mic">
         <path name="unprocessed-handset-mic" />
-        <ctl name="ADC1 Capture Volume" id="0" value="27"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="30"/>
     </path>
 
     <path name="unprocessed-stereo-mic">
         <path name="voice-rec-dmic-ef" />
-        <ctl name="ADC1 Capture Volume" id="0" value="27"/>
-        <ctl name="ADC2 Capture Volume" id="0" value="27"/>
+        <ctl name="ADC1 Capture Volume" id="0" value="30"/>
+        <ctl name="ADC2 Capture Volume" id="0" value="30"/>
     </path>
 
     <path name="unprocessed-three-mic">
