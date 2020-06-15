@@ -192,3 +192,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_EU.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_JP.csv
 
+# SKU specific RROs
+PRODUCT_PACKAGES += \
+    SettingsOverlayG025H
