@@ -5,5 +5,6 @@
     <overlay android:targetPackage="com.android.settings"
              android:requiredSystemPropertyName="ro.boot.hardware.sku"
              android:requiredSystemPropertyValue="G025H"
-             android:isStatic="true" />
+             android:isStatic="true"
+             android:priority="10" />
 </manifest>
