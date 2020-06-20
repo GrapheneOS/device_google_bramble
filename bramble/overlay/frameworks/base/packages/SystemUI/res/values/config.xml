@@ -44,6 +44,9 @@
     <!-- Doze: whether the double tap sensor reports 2D touch coordinates -->
     <bool name="doze_double_tap_reports_touch_coordinates">true</bool>
 
+    <!-- Height of the status bar header bar when on Keyguard (match status_bar_portrait) -->
+    <dimen name="status_bar_header_height_keyguard">@*android:dimen/status_bar_height_portrait</dimen>
+
     <!-- Doze: Table that translates sensor values from the doze_brightness_sensor_type sensor
                to brightness values; -1 means keeping the current brightness. -->
     <integer-array name="config_doze_brightness_sensor_to_brightness">
@@ -84,6 +87,10 @@
 
     <!-- Camera 1 is the front camera on bramble -->
     <string translatable="false" name="config_protectedCameraId">1</string>
+
+    <!-- Comma-separated list of packages to exclude from camera protection. In our case,
+    ignore the gaze detection package -->
+    <string translatable="false" name="config_cameraProtectionExcludedPackages">com.google.android.as</string>
 
     <bool name="config_enableDisplayCutoutProtection">true</bool>
 </resources>
