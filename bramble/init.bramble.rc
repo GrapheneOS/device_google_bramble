@@ -23,3 +23,7 @@ on property:vendor.all.modules.ready=1
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
     group system wakelock
+
+# Override thermal HAL config for B5M
+on property:ro.boot.hardware.majorid=0x0F
+    setprop vendor.thermal.config thermal_info_config_m.json
