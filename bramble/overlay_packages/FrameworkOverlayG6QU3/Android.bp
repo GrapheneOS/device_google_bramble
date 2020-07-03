@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "FrameworkOverlayG6QU3",
+    product_specific: true,
+}
