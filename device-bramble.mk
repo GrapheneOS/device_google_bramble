@@ -161,6 +161,10 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
         $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).chamber.rc
 endif
 
+# GPS ANTENNA_INFO configuration file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gnss_antenna_info.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss_antenna_info.conf
+
 # Audio effects
 PRODUCT_PACKAGES += \
     libqcomvoiceprocessingdescriptors
