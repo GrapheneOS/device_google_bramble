@@ -95,6 +95,10 @@
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="144"/>
     </acdb_ids>
 
+    <audio_input_source_delay>
+        <audio_source_delay name="AUDIO_SOURCE_CAMCORDER" delay="100"/>
+    </audio_input_source_delay>
+
     <audio_output_usecase_delay>
         <audio_usecase_delay name="USECASE_AUDIO_PLAYBACK_DEEP_BUFFER" delay="20"/>
     </audio_output_usecase_delay>
