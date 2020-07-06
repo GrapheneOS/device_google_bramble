@@ -397,11 +397,6 @@ static void DumpTouch(int fd) {
     const char touch_spi_path[] = "/sys/class/spi_master/spi0/spi0.0";
     char cmd[256];
 
-    RunCommandToFd(fd, "Force Set AP as Bus Owner",
-                   {"/vendor/bin/sh", "-c",
-                    "echo A0 01 > /proc/fts/driver_test && "
-                    "cat /proc/fts/driver_test"});
-
     snprintf(cmd, sizeof(cmd), "%s/appid", touch_spi_path);
     if (!access(cmd, R_OK)) {
         // Touch firmware version
@@ -487,10 +482,6 @@ static void DumpTouch(int fd) {
                  touch_spi_path, touch_spi_path);
         RunCommandToFd(fd, "ITO Raw", {"/vendor/bin/sh", "-c", cmd});
     }
-    RunCommandToFd(fd, "Restore Bus Owner",
-                   {"/vendor/bin/sh", "-c",
-                    "echo A0 00 > /proc/fts/driver_test && "
-                    "cat /proc/fts/driver_test"});
 }
 
 static void DumpDisplay(int fd) {
