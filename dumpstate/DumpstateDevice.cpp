@@ -397,11 +397,6 @@ static void DumpTouch(int fd) {
     const char touch_spi_path[] = "/sys/class/spi_master/spi0/spi0.0";
     char cmd[256];
 
-    RunCommandToFd(fd, "Force Set AP as Bus Owner",
-                   {"/vendor/bin/sh", "-c",
-                    "echo A0 01 > /proc/fts/driver_test && "
-                    "cat /proc/fts/driver_test"});
-
     snprintf(cmd, sizeof(cmd), "%s/appid", touch_spi_path);
     if (!access(cmd, R_OK)) {
         // Touch firmware version
@@ -487,10 +482,6 @@ static void DumpTouch(int fd) {
                  touch_spi_path, touch_spi_path);
         RunCommandToFd(fd, "ITO Raw", {"/vendor/bin/sh", "-c", cmd});
     }
-    RunCommandToFd(fd, "Restore Bus Owner",
-                   {"/vendor/bin/sh", "-c",
-                    "echo A0 00 > /proc/fts/driver_test && "
-                    "cat /proc/fts/driver_test"});
 }
 
 static void DumpDisplay(int fd) {
@@ -712,6 +703,9 @@ Return<DumpstateStatus> DumpstateDevice::dumpstateBoard_1_1(const hidl_handle& h
 
     // Keep this at the end as very long on not for humans
     DumpFileToFd(fd, "WLAN FW Log Symbol Table", "/vendor/firmware/Data.msc");
+
+    // Dump camera profiler log
+    RunCommandToFd(fd, "Camera Profiler Logs", {"/vendor/bin/sh", "-c", "for f in /data/vendor/camera/profiler/camx_*; do echo [$f]; cat \"$f\";done"});
 
     if (modemThreadHandle) {
         pthread_join(modemThreadHandle, NULL);

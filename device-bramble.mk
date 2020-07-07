@@ -161,6 +161,10 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
         $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).chamber.rc
 endif
 
+# GPS ANTENNA_INFO configuration file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gnss_antenna_info.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss_antenna_info.conf
+
 # Audio effects
 PRODUCT_PACKAGES += \
     libqcomvoiceprocessingdescriptors
@@ -174,20 +178,11 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth Tx power caps for bramble
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025E.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025E_US.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025I_US.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025H_US.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025I.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025E_EU.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025I_EU.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025H_EU.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025H.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025E_JP.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025I_JP.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G025H_JP.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_US.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_EU.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_JP.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_US.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_EU.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_JP.csv
