@@ -21,9 +21,6 @@ USES_DEVICE_GOOGLE_BRAMBLE := true
 
 include device/google/redbull/BoardConfig-common.mk
 
-# Allow LZ4 compression
-BOARD_RAMDISK_USE_LZ4 := true
-
 # Testing related defines
 #BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
 
