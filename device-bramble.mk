@@ -190,4 +190,5 @@ PRODUCT_COPY_FILES += \
 # SKU specific RROs
 PRODUCT_PACKAGES += \
     SettingsOverlayG025H \
-    FrameworkOverlayG6QU3
+    FrameworkOverlayG6QU3 \
+    SettingsOverlayG025I
