@@ -183,9 +183,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_EU.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_JP.csv \
     $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_us.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_US.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_eu.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_EU.csv \
-    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_jp.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_JP.csv
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_US.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_EU.csv \
+    $(LOCAL_PATH)/bluetooth_power_limits_bramble_mmwave_ROW.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits_G6QU3_JP.csv
 
 # SKU specific RROs
 PRODUCT_PACKAGES += \
