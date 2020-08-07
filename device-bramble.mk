@@ -192,4 +192,5 @@ PRODUCT_PACKAGES += \
     SettingsOverlayG025H \
     FrameworkOverlayG6QU3 \
     SettingsOverlayG025I \
-    SettingsOverlayG6QU3
+    SettingsOverlayG6QU3 \
+    SettingsOverlayG025E
