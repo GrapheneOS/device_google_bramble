@@ -191,4 +191,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SettingsOverlayG025H \
     FrameworkOverlayG6QU3 \
-    SettingsOverlayG025I
+    SettingsOverlayG025I \
+    SettingsOverlayG6QU3
