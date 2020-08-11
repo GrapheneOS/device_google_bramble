@@ -28,5 +28,5 @@
     <item>@drawable/b5_compensation_image_30k</item>
   </array>
 
-  <integer name="config_compensation_filter_horizon">4000</integer>
+  <integer name="config_compensation_filter_horizon">3500</integer>
 </resources>
