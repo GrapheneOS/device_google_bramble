@@ -355,6 +355,12 @@ static void *dumpModemThread(void *data)
                 modemLogAllDir.c_str());
         RunCommandToFd(STDOUT_FILENO, "Dump IPA log", {"/vendor/bin/sh", "-c", cmd});
 
+        //Dump QRTR0 log for QMI service state
+        snprintf(cmd, sizeof(cmd),
+                "cat /d/ipc_logging/qrtr_0/log > %s/qrtr_0_log",
+                modemLogAllDir.c_str());
+        RunCommandToFd(STDOUT_FILENO, "Dump QRTR0 log", {"/vendor/bin/sh", "-c", cmd});
+
         dumpLogs(STDOUT_FILENO, extendedLogDir, modemLogAllDir, 100, EXTENDED_LOG_PREFIX);
         android::base::SetProperty(MODEM_EFS_DUMP_PROPERTY, "false");
     }
@@ -670,6 +676,7 @@ Return<DumpstateStatus> DumpstateDevice::dumpstateBoard_1_1(const hidl_handle& h
     RunCommandToFd(fd, "CPU cpuidle", {"/vendor/bin/sh", "-c", "for cpu in /sys/devices/system/cpu/cpu*; do for d in $cpu/cpuidle/state*; do if [ ! -d $d ]; then continue; fi; echo \"$d: `cat $d/name` `cat $d/desc` `cat $d/time` `cat $d/usage`\"; done; done"});
     RunCommandToFd(fd, "Airbrush debug info", {"/vendor/bin/sh", "-c", "for f in `ls /sys/devices/platform/soc/c84000.i2c/i2c-4/4-0066/@(*curr|temperature|vbat|total_power)`; do echo \"$f: `cat $f`\" ; done; file=/d/airbrush/airbrush_sm/chip_state; echo \"$file: `cat $file`\""});
     DumpFileToFd(fd, "TCPM logs", "/d/usb/tcpm-usbpd0");
+    DumpFileToFd(fd, "TCPM logs", "/dev/logbuffer_tcpm");
     DumpFileToFd(fd, "PD Engine", "/dev/logbuffer_usbpd");
     DumpFileToFd(fd, "PPS", "/dev/logbuffer_pps");
     DumpFileToFd(fd, "BMS", "/dev/logbuffer_ssoc");
