@@ -353,6 +353,12 @@ static void *dumpModemThread(void *data)
                 modemLogAllDir.c_str());
         RunCommandToFd(STDOUT_FILENO, "Dump IPA log", {"/vendor/bin/sh", "-c", cmd});
 
+        //Dump QRTR0 log for QMI service state
+        snprintf(cmd, sizeof(cmd),
+                "cat /d/ipc_logging/qrtr_0/log > %s/qrtr_0_log",
+                modemLogAllDir.c_str());
+        RunCommandToFd(STDOUT_FILENO, "Dump QRTR0 log", {"/vendor/bin/sh", "-c", cmd});
+
         dumpLogs(STDOUT_FILENO, extendedLogDir, modemLogAllDir, 100, EXTENDED_LOG_PREFIX);
         android::base::SetProperty(MODEM_EFS_DUMP_PROPERTY, "false");
     }
