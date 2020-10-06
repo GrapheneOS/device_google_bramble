@@ -194,3 +194,6 @@ PRODUCT_PACKAGES += \
     SettingsOverlayG025I \
     SettingsOverlayG6QU3 \
     SettingsOverlayG025E
+
+# Keyboard bottom padding in dp for portrait mode
+PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_b=10
