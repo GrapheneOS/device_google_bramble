@@ -101,7 +101,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/cs35l41/B5mmW/R-cs35l41-mmW-dsp1-spk-diag.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/R-cs35l41-mmW-dsp1-spk-diag.bin
 
 # Audio CS35L41 speaker calibration tool
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES_DEBUG += \
     crus_sp_cal
 
 ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble.mk),)
