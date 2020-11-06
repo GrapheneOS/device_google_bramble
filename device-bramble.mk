@@ -18,15 +18,15 @@ PRODUCT_HARDWARE := bramble
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-        LOCAL_KERNEL := device/google/bramble-kernel/Image.lz4
+        LOCAL_KERNEL := device/google/redbull-kernel/Image.lz4
     else
-        LOCAL_KERNEL := device/google/bramble-kernel/vintf/Image.lz4
+        LOCAL_KERNEL := device/google/redbull-kernel/vintf/Image.lz4
     endif
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_VENDOR_KERNEL_HEADERS := device/google/bramble-kernel/sm7250/kernel-headers
+PRODUCT_VENDOR_KERNEL_HEADERS := device/google/redbull-kernel/sm7250/kernel-headers
 
 include build/make/target/product/iorap_large_memory_config.mk
 include device/google/redbull/device-common.mk
@@ -101,7 +101,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/cs35l41/B5mmW/R-cs35l41-mmW-dsp1-spk-diag.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/R-cs35l41-mmW-dsp1-spk-diag.bin
 
 # Audio CS35L41 speaker calibration tool
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES_DEBUG += \
     crus_sp_cal
 
 ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble.mk),)
