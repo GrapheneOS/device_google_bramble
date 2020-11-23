@@ -191,3 +191,10 @@ PRODUCT_PACKAGES += \
 
 # Keyboard bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_b=10
+
+# Set support hide display cutout feature
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_hide_display_cutout=true
+
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay
