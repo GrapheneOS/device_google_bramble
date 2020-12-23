@@ -154,7 +154,6 @@ PRODUCT_PACKAGES += \
 # Thermal HAL config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/thermal_info_config_$(PRODUCT_HARDWARE).json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json \
-    $(LOCAL_PATH)/thermal_info_config_$(PRODUCT_HARDWARE)_m.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config_m.json
 
 # GPS ANTENNA_INFO configuration file
 PRODUCT_COPY_FILES += \
