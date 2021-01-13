@@ -48,25 +48,16 @@ cc_defaults {
         "PixelVibratorTestDefaults",
         "android.hardware.vibrator-defaults.bramble",
     ],
-    static_libs: ["android.hardware.vibrator-impl_system.bramble"],
+    static_libs: ["android.hardware.vibrator-impl.bramble"],
 }
 
-// TODO(eliptus): Combine library definitions when b/129505315 is resolved.
-
 cc_library {
-    name: "android.hardware.vibrator-impl_system.bramble",
+    name: "android.hardware.vibrator-impl.bramble",
     defaults: ["VibratorHalDrv2624BinaryDefaultsBramble"],
     srcs: ["Vibrator.cpp"],
     export_include_dirs: ["."],
+    vendor_available: true,
     visibility: [":__subpackages__"],
-}
-
-cc_library {
-    name: "android.hardware.vibrator-impl_vendor.bramble",
-    defaults: ["VibratorHalDrv2624BinaryDefaultsBramble"],
-    srcs: ["Vibrator.cpp"],
-    export_include_dirs: ["."],
-    proprietary: true,
 }
 
 cc_binary {
@@ -75,6 +66,6 @@ cc_binary {
     init_rc: ["android.hardware.vibrator-service.bramble.rc"],
     vintf_fragments: ["android.hardware.vibrator-service.bramble.xml"],
     srcs: ["service.cpp"],
-    static_libs: ["android.hardware.vibrator-impl_vendor.bramble"],
+    static_libs: ["android.hardware.vibrator-impl.bramble"],
     proprietary: true,
 }
