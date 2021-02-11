@@ -60,4 +60,4 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_bramble
 PRODUCT_DEVICE := bramble
-PRODUCT_MODEL := AOSP on bramble
+PRODUCT_MODEL := Pixel 4a (5G)
