@@ -161,8 +161,8 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 endif
 
 # GPS ANTENNA_INFO configuration file
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gnss_antenna_info.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss_antenna_info.conf
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/gnss_antenna_info.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss_antenna_info.conf
 
 # Audio effects
 PRODUCT_PACKAGES += \
