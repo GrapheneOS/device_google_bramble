@@ -16,4 +16,4 @@
 
 $(call inherit-product, device/google/bramble/aosp_bramble.mk)
 PRODUCT_NAME := aosp_bramble_64
-PRODUCT_MODEL := Bramble (64-bit only)
+PRODUCT_MODEL := Bramble 64-bit only
