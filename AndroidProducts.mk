@@ -15,7 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_bramble.mk \
+    $(LOCAL_DIR)/bramble.mk \
 
 COMMON_LUNCH_CHOICES := \
-    aosp_bramble-userdebug \
+    bramble-userdebug \
