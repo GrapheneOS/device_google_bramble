@@ -13,15 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ifdef PHONE_CAR_BOARD_CONFIG
+    include $(PHONE_CAR_BOARD_CONFIG)
+else
+    TARGET_BOOTLOADER_BOARD_NAME := bramble
+    TARGET_SCREEN_DENSITY := 420
+    TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
+    USES_DEVICE_GOOGLE_BRAMBLE := true
 
-TARGET_BOOTLOADER_BOARD_NAME := bramble
-TARGET_SCREEN_DENSITY := 420
-TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
-USES_DEVICE_GOOGLE_BRAMBLE := true
+    include device/google/redbull/BoardConfig-common.mk
 
-include device/google/redbull/BoardConfig-common.mk
+    # Testing related defines
+    #BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
 
-# Testing related defines
-#BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/b5-setup.sh
-
--include vendor/google_devices/$(TARGET_BOOTLOADER_BOARD_NAME)/proprietary/BoardConfigVendor.mk
+    -include vendor/google_devices/$(TARGET_BOOTLOADER_BOARD_NAME)/proprietary/BoardConfigVendor.mk
+endif
