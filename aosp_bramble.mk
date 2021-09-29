@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+PRODUCT_SOONG_NAMESPACES += vendor/google_devices/bramble
+
 #
 # All components inherited here go to system image
 #
