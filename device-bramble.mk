@@ -31,6 +31,8 @@ PRODUCT_VENDOR_KERNEL_HEADERS := device/google/redbull-kernel/sm7250/kernel-head
 include build/make/target/product/iorap_large_memory_config.mk
 include device/google/redbull/device-common.mk
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
 # LOCAL_PATH is device/google/redbull before this
 LOCAL_PATH := device/google/bramble
 
@@ -49,13 +51,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration_a2dp_offload_disabled.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_a2dp_offload_disabled.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration_bluetooth_legacy_hal.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_bluetooth_legacy_hal.xml \
     $(LOCAL_PATH)/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/hearing_aid_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hearing_aid_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration_7_0.xml \
+    frameworks/av/services/audiopolicy/config/hearing_aid_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hearing_aid_audio_policy_configuration_7_0.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    device/google/bramble/displayconfig/display_id_4630946475097398401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946475097398401.xml
 
 # Audio ACDB data
 ifeq ($(wildcard vendor/google_cei/factory/prebuilt/ftm.mk),)
@@ -101,7 +104,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/cs35l41/B5mmW/R-cs35l41-mmW-dsp1-spk-diag.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/R-cs35l41-mmW-dsp1-spk-diag.bin
 
 # Audio CS35L41 speaker calibration tool
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES_DEBUG += \
     crus_sp_cal
 
 ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble.mk),)
@@ -109,7 +112,7 @@ ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble
 endif
 
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.2-service.bramble
+    android.hardware.usb@1.3-service.bramble
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
@@ -154,12 +157,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/thermal_info_config_$(PRODUCT_HARDWARE).json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json \
 
-# Support to disable thermal protection at run time
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-    PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).chamber.rc
-endif
-
 # GPS ANTENNA_INFO configuration file
 #PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/gnss_antenna_info.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gnss_antenna_info.conf
@@ -196,3 +193,15 @@ PRODUCT_PACKAGES += \
 
 # Keyboard bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.kb_pad_port_b=10
+
+# Set support hide display cutout feature
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_hide_display_cutout=true
+
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay \
+    AvoidAppsInCutoutOverlay
+
+# (b/183612348): Enable skia reduceOpsTaskSplitting
+PRODUCT_PROPERTY_OVERRIDES += \
+    renderthread.skia.reduceopstasksplitting=true

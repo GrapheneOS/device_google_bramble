@@ -39,18 +39,14 @@ PRODUCT_COPY_FILES := \
      vendor/qcom/bramble/proprietary/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml \
      vendor/qcom/bramble/proprietary/qti_telephony_hidl_wrapper.xml:system_ext/etc/permissions/qti_telephony_hidl_wrapper.xml \
      vendor/qcom/bramble/proprietary/qti_telephony_utils.xml:system_ext/etc/permissions/qti_telephony_utils.xml \
-     vendor/qcom/bramble/proprietary/telephonyservice.xml:system_ext/etc/permissions/telephonyservice.xml \
      vendor/qcom/bramble/proprietary/com.qualcomm.qti.imscmservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar \
      vendor/qcom/bramble/proprietary/com.qualcomm.qti.imscmservice-V2.1-java.jar:system_ext/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar \
      vendor/qcom/bramble/proprietary/com.qualcomm.qti.imscmservice-V2.2-java.jar:system_ext/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar \
      vendor/qcom/bramble/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
      vendor/qcom/bramble/proprietary/com.qualcomm.qti.uceservice-V2.1-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.1-java.jar \
-     vendor/qcom/bramble/proprietary/ConnectivityExt.jar:system_ext/framework/ConnectivityExt.jar \
      vendor/qcom/bramble/proprietary/qcrilhook.jar:system_ext/framework/qcrilhook.jar \
      vendor/qcom/bramble/proprietary/qti-telephony-hidl-wrapper.jar:system_ext/framework/qti-telephony-hidl-wrapper.jar \
      vendor/qcom/bramble/proprietary/qti-telephony-utils.jar:system_ext/framework/qti-telephony-utils.jar \
-     vendor/qcom/bramble/proprietary/remotesimlockmanagerlibrary.jar:system_ext/framework/remotesimlockmanagerlibrary.jar \
-     vendor/qcom/bramble/proprietary/uimremotesimlocklibrary.jar:system_ext/framework/uimremotesimlocklibrary.jar \
      vendor/qcom/bramble/proprietary/vendor.qti.hardware.data.connection-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.connection-V1.0-java.jar \
      vendor/qcom/bramble/proprietary/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar \
      vendor/qcom/bramble/proprietary/vendor.qti.hardware.data.iwlan-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.iwlan-V1.0-java.jar \
