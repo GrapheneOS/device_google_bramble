@@ -110,8 +110,11 @@ ifeq ($(wildcard vendor/google_devices/bramble/proprietary/device-vendor-bramble
     BUILD_WITHOUT_VENDOR := true
 endif
 
+# USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.bramble
+    android.hardware.usb-service.bramble
+PRODUCT_PACKAGES += \
+    android.hardware.usb.gadget-service.bramble
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
