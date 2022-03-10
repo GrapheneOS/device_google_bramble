@@ -1,5 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,:qcom,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,.jar,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,.xml,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
+
 ifneq ($(filter bramble, $(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
