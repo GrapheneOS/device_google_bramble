@@ -539,6 +539,9 @@
     <ctl name="HDMI Mixer MultiMedia9" value="0" />
     <ctl name="HDMI Mixer MultiMedia10" value="0" />
     <ctl name="HDMI Mixer MultiMedia16" value="0" />
+    <ctl name="RX INT0 MIX2 INP" value="0" />
+    <ctl name="RX INT1 MIX2 INP" value="0" />
+    <ctl name="RX INT2 MIX2 INP" value="0" />
     <!-- add initial value end-->
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
