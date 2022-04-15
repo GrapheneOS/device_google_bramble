@@ -1,5 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
+$(call declare-license-metadata,$(LOCAL_PATH)/vendor.img,legacy_proprietary,proprietary,$(LOCAL_PATH)/../LICENSE,"Vendor Image",vendor)
+
 $(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,:qcom,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
 $(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,.jar,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
 $(eval $(call declare-copy-files-license-metadata,vendor/qcom/bramble,.xml,legacy_proprietary,proprietary,vendor/qcom/bramble/LICENSE,))
