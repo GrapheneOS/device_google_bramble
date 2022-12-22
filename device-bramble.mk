@@ -30,6 +30,8 @@ PRODUCT_VENDOR_KERNEL_HEADERS := device/google/redbull-kernel/sm7250/kernel-head
 
 include device/google/redbull/device-common.mk
 
+include device/google/gs-common/wireless_charger/wireless_charger.mk
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression_with_xor.mk)
 
 # LOCAL_PATH is device/google/redbull before this
