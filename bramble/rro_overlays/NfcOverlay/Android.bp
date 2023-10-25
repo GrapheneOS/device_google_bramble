@@ -1,0 +1,9 @@
+package {
+    default_applicable_licenses: ["device_google_bramble_license"],
+}
+
+runtime_resource_overlay {
+    name: "NfcOverlayBramble",
+    sdk_version: "current",
+    product_specific: true
+}
