@@ -20,4 +20,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_bramble_hwasan.mk \
 
 COMMON_LUNCH_CHOICES := \
-    aosp_bramble-userdebug \
+    aosp_bramble-trunk_staging-userdebug \
